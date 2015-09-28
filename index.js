@@ -59,7 +59,6 @@ function hb(options) {
 
 		try {
 			context = mixin({}, data);
-			template = hbs.compile(file.contents.toString());
 
 			if (includeFile) {
 				context.file = file;
@@ -68,6 +67,8 @@ function hb(options) {
 			if (typeof dataEach === 'function') {
 				context = dataEach(context, file);
 			}
+
+			template = hbs.compile(file.contents.toString());
 
 			if (debug) {
 				logger.file(file.path.replace(file.base, ''));
